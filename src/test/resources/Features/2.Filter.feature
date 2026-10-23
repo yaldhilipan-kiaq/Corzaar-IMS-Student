@@ -1,9 +1,24 @@
 Feature: CORZAAR IMS Mobile Application
 
+  Scenario: Verify user can search valid course through Search Option
+    Given User Clicks course option to search course
+    When User enters Valid Course name
+    And User Clicks the Search button for valid course
+    Then Valid Course is displayed
+
+  Scenario: Verify user can search Invalid course through Search Option
+    Given User enters InValid Course name
+    When enters Valid Course name
+    Then No  Course should be displayed
+
+  Scenario: Verify User can add Course to Favourites
+    Given User is on the Course page
+    And User Click the Favourites button to add course
+    Then The Course is added in favourites
+
   Scenario: Verify User can search course by Category
-    Given User clicks the Course option to filter courses
-    When User clicks the Filter & Sort option to select category
-    And User clicks Technology category
+    Given User clicks the Filter & Sort option to select category
+    When User clicks Technology category
     And User clicks the Apply Filter button
     Then Courses are displayed for selected category
 

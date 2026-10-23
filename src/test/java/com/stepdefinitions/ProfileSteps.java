@@ -14,9 +14,95 @@ public class ProfileSteps extends BaseClass {
 
 	ProfilePage profile = new ProfilePage(DeviceSessionManager.getDriver());
 
+	// PROFILE FIELD
+	// EMPTY-------------------------------------------------------------
+
+	@Given("User verifies the Profile name before completion")
+	public void user_verifies_the_profile_name_before_completion() {
+		visibilityWait(DeviceSessionManager.getDriver(), profile.profile);
+		click(DeviceSessionManager.getDriver(), profile.profile);
+	}
+
+	@When("user leaves the profile name empty")
+	public void user_leaves_the_profile_name_empty() {
+		sendKeys(DeviceSessionManager.getDriver(), profile.profileName, "");
+	}
+
+	@When("user leaves the profile email empty")
+	public void user_leaves_the_profile_email_empty() {
+		sendKeys(DeviceSessionManager.getDriver(), profile.profileEmail, "");
+	}
+
+	@When("User clicks the save profile")
+	public void user_clicks_the_save_profile() {
+		click(DeviceSessionManager.getDriver(), profile.SaveProfile);
+	}
+
+	@Then("Complete your profile is displayed")
+	public void complete_your_profile_is_displayed() {
+		visibilityWait(DeviceSessionManager.getDriver(), profile.incompleteProfile);
+		String actual = profile.incompleteProfile.getText();
+		String expected = "Complete your profile";
+		Assert.assertEquals(expected, actual);
+	}
+
+	// PROFILE
+	// COMPLETE------------------------------------------------------------------
+
+	@Given("User enters {string} in profile name field")
+	public void user_enters_in_profile_name_field(String string) {
+		sendKeys(DeviceSessionManager.getDriver(), profile.profileName, "NEW STUDENT");
+	}
+
+	@When("User enters {string} in profile email field")
+	public void user_enters_in_profile_email_field(String string) {
+		sendKeys(DeviceSessionManager.getDriver(), profile.profileEmail, "newstudent@gmail.com");
+	}
+
+	@When("User Clicks Save profile button")
+	public void user_clicks_save_profile_button() {
+		click(DeviceSessionManager.getDriver(), profile.SaveProfile);
+	}
+
+	@Then("The profile name is changed successfully")
+	public void the_profile_name_is_changed_successfully() {
+		visibilityWait(DeviceSessionManager.getDriver(), profile.completedProfile);
+		String actual = profile.completedProfile.getText();
+		String expected = "NEW STUDENT";
+		Assert.assertEquals(expected, actual);
+	}
+
+	// REFRRAL CODE
+	// ---------------------------------------------------------------------------
+
+	@Given("User clicks Referal option")
+	public void user_clicks_referal_option() {
+		click(DeviceSessionManager.getDriver(), profile.wallet);
+	}
+
+	@When("User verifies the Referral code")
+	public void user_verifies_the_referral_code() {
+		visibilityWait(DeviceSessionManager.getDriver(), profile.referalCode);
+		String actual = profile.referalCode.getText();
+		String expected = "REF9D150ABE";
+		Assert.assertEquals(expected, actual);
+	}
+
+	@When("user clicks back button")
+	public void user_clicks_back_button() {
+		click(DeviceSessionManager.getDriver(), profile.ReferalBack);
+	}
+
+	@Then("User navigates back to profile")
+	public void user_navigates_back_to_profile() {
+
+	}
+
+//MARK CURRICULUMN -----------------------------------------------------------------
+
 	@Given("User click Profile option")
 	public void user_click_profile_option() {
-		click(DeviceSessionManager.getDriver(), profile.profile);
+
 	}
 
 	@When("User Clicks Mark Curriculumn Progress")
@@ -49,6 +135,16 @@ public class ProfileSteps extends BaseClass {
 		String actual = profile.CourseCompleted.getText();
 		String expected = "active · 100% done";
 		Assert.assertEquals(expected, actual);
+	}
+
+	@When("User Verifies view Certificate")
+	public void user_verifies_view_certificate() {
+		Assert.assertTrue("Button is clickable", profile.CertificateView.isDisplayed());
+	}
+
+	@When("user verfiies Download pdf")
+	public void user_verfiies_download_pdf() {
+		Assert.assertTrue("Button is clickable", profile.DownloadPDF.isDisplayed());
 	}
 
 	@Then("User clicks sign out button")

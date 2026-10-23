@@ -22,6 +22,18 @@ public class FilterPage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"qtile-courses\")")
 	public WebElement CoursesOption;
 
+	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"discover-input\")")
+	public WebElement SearchBox;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
+	public WebElement SearchApply;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Chemical Course \")")
+	public WebElement ChemicalCourse;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\").instance(0)")
+	public WebElement Favourites;
+
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Filter & Sort\")")
 	public WebElement FilterandSort;
 

@@ -94,15 +94,41 @@ public class SignInRemainderSteps extends BaseClass {
 		click(DeviceSessionManager.getDriver(), sign.closeButton);
 	}
 
-	@When("User navigates back")
+	@Then("User navigates back")
 	public void user_navigates_back() {
 		scrollToElementByText(DeviceSessionManager.getDriver(), "Course details");
 		click(DeviceSessionManager.getDriver(), sign.backtoHome);
+
+	}
+
+	// ADD FAVOURITES WITHOUT
+	// SIGNIN-------------------------------------------------------
+
+	@Given("User is on Course discover page")
+	public void user_is_on_course_discover_page() {
+
+	}
+
+	@Given("User clicks Favourites button")
+	public void user_clicks_favourites_button() {
+		click(DeviceSessionManager.getDriver(), sign.Favourites);
+	}
+
+	@Given("It remainds user needs to signIn before adding to favourites")
+	public void it_remainds_user_needs_to_sign_in_before_adding_to_favourites() {
+		visibilityWait(DeviceSessionManager.getDriver(), sign.Student);
+		String actual = sign.Student.getText();
+		String expected = "Student";
+		Assert.assertEquals(expected, actual);
+	}
+
+	@Given("User closes the student sign in button")
+	public void user_closes_the_student_sign_in_button() {
+		click(DeviceSessionManager.getDriver(), sign.closeButton);
 	}
 
 	@Then("User is on the homepage and signin option is visible")
 	public void user_is_on_the_homepage_and_signin_option_is_visible() {
-
 		click(DeviceSessionManager.getDriver(), sign.home);
 
 		visibilityWait(DeviceSessionManager.getDriver(), sign.signIn);

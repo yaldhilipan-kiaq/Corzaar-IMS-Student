@@ -15,5 +15,11 @@ Feature: CORZAAR IMS Mobile Application
     And User Clicks Start Payment button
     And It remainds user needs to signIn before start a payment
     And User close the Student Sign In portal
-    And  User navigates back 
+    Then User navigates back
+
+  Scenario: Verify Favourites button without Sign In
+    Given User is on Course discover page
+    And User clicks Favourites button
+    And It remainds user needs to signIn before adding to favourites
+    And User closes the student sign in button
     Then User is on the homepage and signin option is visible

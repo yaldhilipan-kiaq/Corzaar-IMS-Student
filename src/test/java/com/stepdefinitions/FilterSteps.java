@@ -14,14 +14,75 @@ public class FilterSteps extends BaseClass {
 
 	FilterPage filter = new FilterPage(DeviceSessionManager.getDriver());
 
-	// CATEGORY
+//VALID COURSE THROUGH SEARCH --------------------------------------------------------
 
-	@Given("User clicks the Course option to filter courses")
-	public void user_clicks_the_course_option_to_filter_courses() {
+	@Given("User Clicks course option to search course")
+	public void user_clicks_course_option_to_search_course() {
 		click(DeviceSessionManager.getDriver(), filter.CoursesOption);
 	}
 
-	@When("User clicks the Filter & Sort option to select category")
+	@When("User enters Valid Course name")
+	public void user_enters_valid_course_name() {
+		sendKeys(DeviceSessionManager.getDriver(), filter.SearchBox, "Chemical Course ");
+	}
+
+	@When("User Clicks the Search button for valid course")
+	public void user_clicks_the_search_button_for_valid_course() {
+		click(DeviceSessionManager.getDriver(), filter.SearchApply);
+	}
+
+	@Then("Valid Course is displayed")
+	public void valid_course_is_displayed() {
+		visibilityWait(DeviceSessionManager.getDriver(), filter.ChemicalCourse);
+		String actual = filter.ChemicalCourse.getText();
+		String expected = "Chemical Course ";
+
+		Assert.assertEquals(expected, actual);
+	}
+
+	// INVALID COURSE THROUGH
+	// SEARCH--------------------------------------------------
+
+	@Given("User enters InValid Course name")
+	public void user_enters_in_valid_course_name() {
+		sendKeys(DeviceSessionManager.getDriver(), filter.SearchBox, "Gaming");
+	}
+
+	@When("enters Valid Course name")
+	public void enters_valid_course_name() {
+		click(DeviceSessionManager.getDriver(), filter.SearchApply);
+	}
+
+	@Then("No  Course should be displayed")
+	public void no_course_should_be_displayed() {
+		visibilityWait(DeviceSessionManager.getDriver(), filter.ChemicalCourse);
+		String actual = filter.ChemicalCourse.getText();
+		String expected = "Chemical Course ";
+
+		Assert.assertEquals(expected, actual);
+	}
+
+	// FAVOURITES
+	// --------------------------------------------------------------------
+
+	@Given("User is on the Course page")
+	public void user_is_on_the_course_page() {
+
+	}
+
+	@Given("User Click the Favourites button to add course")
+	public void user_click_the_favourites_button_to_add_course() {
+		click(DeviceSessionManager.getDriver(), filter.Favourites);
+	}
+
+	@Then("The Course is added in favourites")
+	public void the_course_is_added_in_favourites() {
+		Assert.assertTrue("Favourites button is Clicked", filter.Favourites.isDisplayed());
+	}
+
+	// CATEGORY-------------------------------------------------------------------------
+
+	@Given("User clicks the Filter & Sort option to select category")
 	public void user_clicks_the_filter_sort_option_to_select_category() {
 		click(DeviceSessionManager.getDriver(), filter.FilterandSort);
 	}

@@ -19,8 +19,35 @@ public class ProfilePage {
 
 	}
 
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Profile\")")
+	public WebElement Profile1;
+
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
 	public WebElement profile;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
+	public WebElement wallet;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"REF9D150ABE\")")
+	public WebElement referalCode;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
+	public WebElement ReferalBack;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Complete your profile\")")
+	public WebElement incompleteProfile;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"NEW STUDENT\")")
+	public WebElement completedProfile;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"profile-name\")")
+	public WebElement profileName;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"profile-email\")")
+	public WebElement profileEmail;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Save profile\")")
+	public WebElement SaveProfile;
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Mark curriculum progress\").instance(0)")
 	public WebElement markCurriculum;

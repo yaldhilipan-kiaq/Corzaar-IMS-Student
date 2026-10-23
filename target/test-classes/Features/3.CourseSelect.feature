@@ -6,3 +6,8 @@ When User Clicks Enroll button
 And User  verifies review input field
 And User verifies the Submit Review button
 Then User gets back to Profile To complete enrollment
+
+@Coursecount
+Scenario: Verify Course Count
+Given User is on the all Course page
+Then Displayed course count should match the total courses listed

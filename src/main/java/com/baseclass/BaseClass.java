@@ -1,8 +1,10 @@
 package com.baseclass;
 
+import java.awt.Dimension;
 import java.io.File;
 import java.time.Duration;
 import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.commons.io.FileUtils;
@@ -30,6 +32,11 @@ public class BaseClass {
 		element.click();
 	}
 
+	public static void relaunchApp(AndroidDriver driver) {
+		driver.terminateApp("com.corzaar.app");
+		driver.activateApp("com.corzaar.app");
+	}
+
 	public static void sendKeys(AndroidDriver driver, WebElement element, String text) {
 
 		WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
@@ -39,7 +46,7 @@ public class BaseClass {
 		element.sendKeys(text);
 		driver.hideKeyboard();
 	}
-	
+
 	public static void otpSendKeys(AndroidDriver driver, WebElement element, String text) {
 
 		WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
@@ -109,17 +116,21 @@ public class BaseClass {
 		driver.executeScript("mobile: scrollGesture",
 				Map.of("left", 100, "top", 400, "width", 800, "height", 1400, "direction", "down", "percent", 0.9));
 	}
-
+//swipeup
 	public static void MobileswipeUp(AndroidDriver driver) {
 
 		org.openqa.selenium.Dimension size = driver.manage().window().getSize();
-		int left = size.width / 10;
-		int top = size.height / 4;
-		int width = size.width * 8 / 10;
-		int height = size.height / 2;
-
-		driver.executeScript("mobile: swipeGesture",
-				Map.of("left", left, "top", top, "width", width, "height", height, "direction", "up", "percent", 1.0));
+	    int x = size.width / 2;
+	    int startY = (int) (size.height * 0.75);
+	    int endY = (int) (size.height * 0.30);
+	 
+	    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+	    Sequence swipe = new Sequence(finger, 1);
+	    swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, startY));
+	    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+	    swipe.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), x, endY));
+	    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+	    driver.perform(List.of(swipe));
 	}
 
 	public static void MobileswipeDown(AndroidDriver driver) {
@@ -140,14 +151,14 @@ public class BaseClass {
 
 				+ ".scrollIntoView(new UiSelector().text(\"" + text + "\"))"));
 	}
-	
+
 	public void scrollToElementByTextContains(AndroidDriver driver, String text) {
 
 		driver.findElement(AppiumBy.androidUIAutomator("new UiScrollable(new UiSelector().scrollable(true))"
 
 				+ ".scrollIntoView(new UiSelector().textContains(\"" + text + "\"))"));
 	}
-	
+
 	public void tapUpperPart(AndroidDriver driver, WebElement element) {
 		org.openqa.selenium.Rectangle rect = element.getRect();
 		int x = rect.getX() + (rect.getWidth() / 2);

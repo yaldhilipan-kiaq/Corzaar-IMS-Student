@@ -1,6 +1,10 @@
 package com.stepdefinitions;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import org.junit.Assert;
+import org.openqa.selenium.WebElement;
 
 import com.baseclass.BaseClass;
 import com.driver.DeviceSessionManager;
@@ -49,5 +53,50 @@ public class CoursePageSteps extends BaseClass {
 		// MobileswipeDown(DeviceSessionManager.getDriver());
 		click(DeviceSessionManager.getDriver(), course.backtoHome);
 	}
+	
+	//-----------------------------------------------------------------------
+	
+	@Given("User is on the all Course page")
+	public void user_is_on_the_all_course_page() {
+		//click(DeviceSessionManager.getDriver(), course.CoursesOption);
+	}
 
-}
+	@Then("Displayed course count should match the total courses listed")
+	public void displayed_course_count_should_match_the_total_courses_listed() {
+		int displayedCount = getDisplayedCount();
+	    int actualCount = getTotalCoursesBySwiping();
+	 
+	    System.out.println("Displayed: " + displayedCount + " | Actual: " + actualCount);
+	    Assert.assertEquals("Course count mismatch", displayedCount, actualCount);
+	}
+	 
+	private int getDisplayedCount() {
+	    String text = course.resultsCount.getText();     
+	    String firstPart = text.trim().split(" ")[0];              
+	    return Integer.parseInt(firstPart.replaceAll("[^0-9]", ""));
+	}
+	 
+	private int getTotalCoursesBySwiping() {
+	    Set<String> allCourses = new HashSet<>();
+	    int swipesWithNoNewCourse = 0;
+	 
+	    while (swipesWithNoNewCourse < 2) {
+	        int countBefore = allCourses.size();
+	 
+	        for (WebElement card : course.courseCount) {
+	            allCourses.add(card.getAttribute("resource-id"));
+	        }
+	 
+	        if (allCourses.size() == countBefore) {
+	            swipesWithNoNewCourse++;
+	        } else {
+	            swipesWithNoNewCourse = 0;
+	        }
+	        MobileswipeUp(DeviceSessionManager.getDriver());
+	    }
+	    System.out.println("Total courses found: " + allCourses.size());
+	    return allCourses.size();
+	}
+	}
+
+

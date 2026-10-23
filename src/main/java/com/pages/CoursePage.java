@@ -1,6 +1,7 @@
 package com.pages;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -19,6 +20,9 @@ public class CoursePage {
 
 	}
 
+	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"qtile-courses\")")
+	public WebElement CoursesOption;
+	
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Training program 1234\")")
 	public WebElement FreeCourse;
 
@@ -42,5 +46,12 @@ public class CoursePage {
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
 	public WebElement backtoHome;
-
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'results')]")
+	public WebElement resultsCount;
+	
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[starts-with(@resource-id,'prem-course-')]")
+	public List<WebElement> courseCount;
+	
+	
 }
