@@ -24,9 +24,9 @@ public class VerifyPageSteps extends BaseClass {
 		click(DeviceSessionManager.getDriver(), verify.VerifyOption);
 	}
 
-	@When("User enters Invalid Certificate ID")
-	public void user_enters_invalid_certificate_id() {
-		sendKeys(DeviceSessionManager.getDriver(), verify.IdInputField, "QQQQQ");
+	@When("User enters Invalid Certificate {string} ID")
+	public void user_enters_invalid_certificate_id(String string) {
+		sendKeys(DeviceSessionManager.getDriver(), verify.IdInputField, string);
 	}
 
 	@When("user Clicks the Verify certificate button")
@@ -37,14 +37,15 @@ public class VerifyPageSteps extends BaseClass {
 	@Then("An Error message should be displayed for invalid certificate ID")
 	public void an_error_message_should_be_displayed_for_invalid_certificate_id() {
 		visibilityWait(DeviceSessionManager.getDriver(), verify.notVerified);
-		String actual = verify.notVerified.getText();
-		String expected = "Not verified";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), verify.notVerified);
+
+		Assert.assertEquals("Not verified", actual);
+
 	}
 
-	@Given("User enters valid Certificate ID")
-	public void user_enters_valid_certificate_id() {
-		sendKeys(DeviceSessionManager.getDriver(), verify.IdInputField, "CZ-CERT-22B0538E");
+	@Given("User enters valid Certificate {string} ID")
+	public void user_enters_valid_certificate_id(String string) {
+		sendKeys(DeviceSessionManager.getDriver(), verify.IdInputField, string);
 	}
 
 	@When("User Clicks the verify certificate button for valid ID")
@@ -55,18 +56,20 @@ public class VerifyPageSteps extends BaseClass {
 	@When("A valid Certificate is found")
 	public void a_valid_certificate_is_found() {
 		visibilityWait(DeviceSessionManager.getDriver(), verify.ValidCertificate);
-		String actual = verify.ValidCertificate.getText();
-		String expected = "Valid certificate";
-		Assert.assertEquals(expected, actual);
+
+		String actual = getText(DeviceSessionManager.getDriver(), verify.ValidCertificate);
+
+		Assert.assertEquals("Valid certificate", actual);
+
 	}
 
 	@Then("user navigate backs to home page")
 	public void user_navigate_backs_to_home_page() {
 		click(DeviceSessionManager.getDriver(), verify.back);
 		visibilityWait(DeviceSessionManager.getDriver(), verify.signIn);
-		String actual = verify.signIn.getText();
-		String expected = "Sign in";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), verify.signIn);
+
+		Assert.assertEquals("Sign in", actual);
 	}
 
 }

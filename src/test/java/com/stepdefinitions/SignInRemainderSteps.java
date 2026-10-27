@@ -19,10 +19,12 @@ public class SignInRemainderSteps extends BaseClass {
 
 	@Given("User is on the Home Page after SignOut")
 	public void user_is_on_the_home_page_after_sign_out() {
+
 		visibilityWait(DeviceSessionManager.getDriver(), sign.signIn);
-		String actual = sign.signIn.getText();
-		String expected = "Sign in";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), sign.signIn);
+
+		Assert.assertEquals("Sign in", actual);
+
 	}
 
 	@When("User clicks Course module")
@@ -44,9 +46,9 @@ public class SignInRemainderSteps extends BaseClass {
 	@When("It remainds user needs to SignIn before apply Coupon")
 	public void it_remainds_user_needs_to_sign_in_before_apply_coupon() {
 		visibilityWait(DeviceSessionManager.getDriver(), sign.Student);
-		String actual = sign.Student.getText();
-		String expected = "Student";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), sign.Student);
+
+		Assert.assertEquals("Student", actual);
 
 		click(DeviceSessionManager.getDriver(), sign.closeButton);
 	}
@@ -84,9 +86,9 @@ public class SignInRemainderSteps extends BaseClass {
 	@When("It remainds user needs to signIn before start a payment")
 	public void it_remainds_user_needs_to_sign_in_before_start_a_payment() {
 		visibilityWait(DeviceSessionManager.getDriver(), sign.Student);
-		String actual = sign.Student.getText();
-		String expected = "Student";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), sign.Student);
+
+		Assert.assertEquals("Student", actual);
 	}
 
 	@When("User close the Student Sign In portal")
@@ -117,9 +119,9 @@ public class SignInRemainderSteps extends BaseClass {
 	@Given("It remainds user needs to signIn before adding to favourites")
 	public void it_remainds_user_needs_to_sign_in_before_adding_to_favourites() {
 		visibilityWait(DeviceSessionManager.getDriver(), sign.Student);
-		String actual = sign.Student.getText();
-		String expected = "Student";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), sign.Student);
+
+		Assert.assertEquals("Student", actual);
 	}
 
 	@Given("User closes the student sign in button")
@@ -132,9 +134,9 @@ public class SignInRemainderSteps extends BaseClass {
 		click(DeviceSessionManager.getDriver(), sign.home);
 
 		visibilityWait(DeviceSessionManager.getDriver(), sign.signIn);
-		String actual = sign.signIn.getText();
-		String expected = "Sign in";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), sign.signIn);
+
+		Assert.assertEquals("Sign in", actual);
 	}
 
 }

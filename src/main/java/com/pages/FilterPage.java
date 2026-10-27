@@ -34,6 +34,9 @@ public class FilterPage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\").instance(0)")
 	public WebElement Favourites;
 
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Saved to favorites\")")
+	public WebElement Favouritesadded;
+
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Filter & Sort\")")
 	public WebElement FilterandSort;
 

@@ -21,9 +21,9 @@ public class FilterSteps extends BaseClass {
 		click(DeviceSessionManager.getDriver(), filter.CoursesOption);
 	}
 
-	@When("User enters Valid Course name")
-	public void user_enters_valid_course_name() {
-		sendKeys(DeviceSessionManager.getDriver(), filter.SearchBox, "Chemical Course ");
+	@When("User enters Valid Course {string} name")
+	public void user_enters_valid_course_name(String string) {
+		sendKeys(DeviceSessionManager.getDriver(), filter.SearchBox, string);
 	}
 
 	@When("User Clicks the Search button for valid course")
@@ -34,32 +34,28 @@ public class FilterSteps extends BaseClass {
 	@Then("Valid Course is displayed")
 	public void valid_course_is_displayed() {
 		visibilityWait(DeviceSessionManager.getDriver(), filter.ChemicalCourse);
-		String actual = filter.ChemicalCourse.getText();
-		String expected = "Chemical Course ";
+		String actual = getText(DeviceSessionManager.getDriver(), filter.ChemicalCourse);
 
-		Assert.assertEquals(expected, actual);
+		Assert.assertEquals("Chemical Course ", actual);
 	}
 
 	// INVALID COURSE THROUGH
 	// SEARCH--------------------------------------------------
-
-	@Given("User enters InValid Course name")
-	public void user_enters_in_valid_course_name() {
-		sendKeys(DeviceSessionManager.getDriver(), filter.SearchBox, "Gaming");
+	@Given("User enters InValid Course {string} name")
+	public void user_enters_in_valid_course_name(String string) {
+		sendKeys(DeviceSessionManager.getDriver(), filter.SearchBox, string);
 	}
 
-	@When("enters Valid Course name")
-	public void enters_valid_course_name() {
+	@When("User apply the search to check the courses")
+	public void user_apply_the_search_to_check_the_courses() {
 		click(DeviceSessionManager.getDriver(), filter.SearchApply);
 	}
 
 	@Then("No  Course should be displayed")
 	public void no_course_should_be_displayed() {
 		visibilityWait(DeviceSessionManager.getDriver(), filter.ChemicalCourse);
-		String actual = filter.ChemicalCourse.getText();
-		String expected = "Chemical Course ";
 
-		Assert.assertEquals(expected, actual);
+		Assert.assertFalse("Course is displayed for an Invalid search", filter.ChemicalCourse.isDisplayed());
 	}
 
 	// FAVOURITES
@@ -77,7 +73,8 @@ public class FilterSteps extends BaseClass {
 
 	@Then("The Course is added in favourites")
 	public void the_course_is_added_in_favourites() {
-		Assert.assertTrue("Favourites button is Clicked", filter.Favourites.isDisplayed());
+		visibilityWait(DeviceSessionManager.getDriver(), filter.Favouritesadded);
+		Assert.assertTrue("Course is added to favourites", filter.Favouritesadded.isDisplayed());
 	}
 
 	// CATEGORY-------------------------------------------------------------------------
@@ -106,10 +103,9 @@ public class FilterSteps extends BaseClass {
 	@Then("Courses are displayed for selected category")
 	public void courses_are_displayed_for_selected_category() {
 		visibilityWait(DeviceSessionManager.getDriver(), filter.technologyText);
-		String actual = filter.technologyText.getText();
-		String expected = "Technology";
+		String actual = getText(DeviceSessionManager.getDriver(), filter.technologyText);
 
-		Assert.assertEquals(expected, actual);
+		Assert.assertEquals("Technology", actual);
 	}
 
 //1 - 3 MONTHS DURATION----------------------------------------------------------------------------
@@ -138,10 +134,9 @@ public class FilterSteps extends BaseClass {
 	@Then("Courses are displayed for selected duration")
 	public void courses_are_displayed_for_selected_duration() {
 		visibilityWait(DeviceSessionManager.getDriver(), filter.threemonthsText);
-		String actual = filter.threemonthsText.getText();
-		String expected = "3 Months";
+		String actual = getText(DeviceSessionManager.getDriver(), filter.threemonthsText);
 
-		Assert.assertEquals(expected, actual);
+		Assert.assertEquals("3 Months", actual);
 	}
 	// 3 - 6 MONTHS
 	// DURATION---------------------------------------------------------------
@@ -170,10 +165,9 @@ public class FilterSteps extends BaseClass {
 	@Then("Courses are displayed for newly selected duration")
 	public void courses_are_displayed_for_newly_selected_duration() {
 		visibilityWait(DeviceSessionManager.getDriver(), filter.sixmonthsText);
-		String actual = filter.sixmonthsText.getText();
-		String expected = "6 Months";
+		String actual = getText(DeviceSessionManager.getDriver(), filter.sixmonthsText);
 
-		Assert.assertEquals(expected, actual);
+		Assert.assertEquals("6 Months", actual);
 	}
 
 	// FREE
@@ -203,10 +197,9 @@ public class FilterSteps extends BaseClass {
 	@Then("Courses are displayed")
 	public void courses_are_displayed() {
 		visibilityWait(DeviceSessionManager.getDriver(), filter.FreeText);
-		String actual = filter.FreeText.getText();
-		String expected = "Free";
+		String actual = getText(DeviceSessionManager.getDriver(), filter.FreeText);
 
-		Assert.assertEquals(expected, actual);
+		Assert.assertEquals("Free", actual);
 	}
 
 	// ONLINE
@@ -237,10 +230,8 @@ public class FilterSteps extends BaseClass {
 	@Then("Courses are displayed for selected mode")
 	public void courses_are_displayed_for_selected_mode() {
 		visibilityWait(DeviceSessionManager.getDriver(), filter.LiveonlineText);
-		String actual = filter.LiveonlineText.getText();
-		String expected = "Live online";
-
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), filter.LiveonlineText);
+		Assert.assertEquals("Live online", actual);
 	}
 
 }

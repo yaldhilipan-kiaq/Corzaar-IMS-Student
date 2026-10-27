@@ -37,6 +37,15 @@ public class BaseClass {
 		driver.activateApp("com.corzaar.app");
 	}
 
+	public String getText(AndroidDriver driver, WebElement element) {
+		WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+
+		wait.until(ExpectedConditions.visibilityOf(element));
+
+		return element.getText();
+
+	}
+
 	public static void sendKeys(AndroidDriver driver, WebElement element, String text) {
 
 		WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
@@ -116,21 +125,22 @@ public class BaseClass {
 		driver.executeScript("mobile: scrollGesture",
 				Map.of("left", 100, "top", 400, "width", 800, "height", 1400, "direction", "down", "percent", 0.9));
 	}
+
 //swipeup
 	public static void MobileswipeUp(AndroidDriver driver) {
 
 		org.openqa.selenium.Dimension size = driver.manage().window().getSize();
-	    int x = size.width / 2;
-	    int startY = (int) (size.height * 0.75);
-	    int endY = (int) (size.height * 0.30);
-	 
-	    PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
-	    Sequence swipe = new Sequence(finger, 1);
-	    swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, startY));
-	    swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
-	    swipe.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), x, endY));
-	    swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
-	    driver.perform(List.of(swipe));
+		int x = size.width / 2;
+		int startY = (int) (size.height * 0.75);
+		int endY = (int) (size.height * 0.30);
+
+		PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+		Sequence swipe = new Sequence(finger, 1);
+		swipe.addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), x, startY));
+		swipe.addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()));
+		swipe.addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), x, endY));
+		swipe.addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+		driver.perform(List.of(swipe));
 	}
 
 	public static void MobileswipeDown(AndroidDriver driver) {

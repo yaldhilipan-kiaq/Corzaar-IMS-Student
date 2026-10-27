@@ -41,9 +41,9 @@ public class ProfileSteps extends BaseClass {
 	@Then("Complete your profile is displayed")
 	public void complete_your_profile_is_displayed() {
 		visibilityWait(DeviceSessionManager.getDriver(), profile.incompleteProfile);
-		String actual = profile.incompleteProfile.getText();
-		String expected = "Complete your profile";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), profile.incompleteProfile);
+
+		Assert.assertEquals("Complete your profile", actual);
 	}
 
 	// PROFILE
@@ -51,12 +51,12 @@ public class ProfileSteps extends BaseClass {
 
 	@Given("User enters {string} in profile name field")
 	public void user_enters_in_profile_name_field(String string) {
-		sendKeys(DeviceSessionManager.getDriver(), profile.profileName, "NEW STUDENT");
+		sendKeys(DeviceSessionManager.getDriver(), profile.profileName, string);
 	}
 
 	@When("User enters {string} in profile email field")
 	public void user_enters_in_profile_email_field(String string) {
-		sendKeys(DeviceSessionManager.getDriver(), profile.profileEmail, "newstudent@gmail.com");
+		sendKeys(DeviceSessionManager.getDriver(), profile.profileEmail, string);
 	}
 
 	@When("User Clicks Save profile button")
@@ -67,9 +67,9 @@ public class ProfileSteps extends BaseClass {
 	@Then("The profile name is changed successfully")
 	public void the_profile_name_is_changed_successfully() {
 		visibilityWait(DeviceSessionManager.getDriver(), profile.completedProfile);
-		String actual = profile.completedProfile.getText();
-		String expected = "NEW STUDENT";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), profile.completedProfile);
+
+		Assert.assertEquals("NEW STUDENT", actual);
 	}
 
 	// REFRRAL CODE
@@ -83,9 +83,9 @@ public class ProfileSteps extends BaseClass {
 	@When("User verifies the Referral code")
 	public void user_verifies_the_referral_code() {
 		visibilityWait(DeviceSessionManager.getDriver(), profile.referalCode);
-		String actual = profile.referalCode.getText();
-		String expected = "REF9D150ABE";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), profile.referalCode);
+
+		Assert.assertEquals("REF9D150ABE", actual);
 	}
 
 	@When("user clicks back button")
@@ -132,9 +132,9 @@ public class ProfileSteps extends BaseClass {
 
 	@When("User verifys the course is completed")
 	public void user_verifys_the_course_is_completed() {
-		String actual = profile.CourseCompleted.getText();
-		String expected = "active · 100% done";
-		Assert.assertEquals(expected, actual);
+		String actual = getText(DeviceSessionManager.getDriver(), profile.CourseCompleted);
+
+		Assert.assertEquals("active · 100% done", actual);
 	}
 
 	@When("User Verifies view Certificate")

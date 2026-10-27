@@ -1,14 +1,15 @@
 Feature: CORZAAR IMS Mobile Application
 
+@invalidcourse
   Scenario: Verify user can search valid course through Search Option
     Given User Clicks course option to search course
-    When User enters Valid Course name
+    When User enters Valid Course "Chemical Course " name
     And User Clicks the Search button for valid course
     Then Valid Course is displayed
-
+@Validcourse
   Scenario: Verify user can search Invalid course through Search Option
-    Given User enters InValid Course name
-    When enters Valid Course name
+    Given User enters InValid Course "Gaming" name
+    When User apply the search to check the courses
     Then No  Course should be displayed
 
   Scenario: Verify User can add Course to Favourites
@@ -16,6 +17,7 @@ Feature: CORZAAR IMS Mobile Application
     And User Click the Favourites button to add course
     Then The Course is added in favourites
 
+@category
   Scenario: Verify User can search course by Category
     Given User clicks the Filter & Sort option to select category
     When User clicks Technology category

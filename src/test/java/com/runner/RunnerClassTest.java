@@ -21,7 +21,7 @@ value = "com.stepdefinitions,com.hooks")
 value = "pretty")
 
 @ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME,
-value = "")
+value = "@offers")
 
 
 
