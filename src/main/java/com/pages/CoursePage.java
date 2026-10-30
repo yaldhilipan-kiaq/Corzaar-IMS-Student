@@ -23,7 +23,7 @@ public class CoursePage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"qtile-courses\")")
 	public WebElement CoursesOption;
 	
-	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Training program 1234\")")
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Free\")")
 	public WebElement FreeCourse;
 
 	@AndroidFindBy(uiAutomator = "prem-course-a3a16ceb-5f3e-4d79-aada-ec083e5d44e7")
@@ -32,6 +32,9 @@ public class CoursePage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Free\")")
 	public WebElement FreeText;
 
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@resource-id='prem-course-course-product']//android.widget.TextView[following-sibling::android.widget.TextView[1][@text='Design' or @text='Technology' or @text='Business']]")
+	public List<WebElement> AllCourseName;
+	
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Enroll for free\")")
 	public WebElement Enroll;
 

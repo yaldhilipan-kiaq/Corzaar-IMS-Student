@@ -28,7 +28,7 @@ public class ProfilePage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
 	public WebElement wallet;
 
-	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"REF9D150ABE\")")
+	@AndroidFindBy(uiAutomator = "//android.widget.TextView[@text='Your referral code']/following-sibling::android.widget.TextView[1]")
 	public WebElement referalCode;
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
@@ -37,9 +37,10 @@ public class ProfilePage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Complete your profile\")")
 	public WebElement incompleteProfile;
 
-	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"NEW STUDENT\")")
-	public WebElement completedProfile;
-
+	
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='Sign out']/following-sibling::android.view.ViewGroup[1]/following-sibling::android.widget.TextView[2]")
+	public WebElement headerName;
+	
 	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"profile-name\")")
 	public WebElement profileName;
 
@@ -78,5 +79,16 @@ public class ProfilePage {
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Sign out\")")
 	public WebElement SignOut;
+	
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Request refund\")")
+	public WebElement Requestrefund;
+	
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Reason for refund\")")
+	public WebElement RequestForrefund;
+	
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Submit\")")
+	public WebElement Submit;
+	
+	
 
 }

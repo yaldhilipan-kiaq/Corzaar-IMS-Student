@@ -1,6 +1,8 @@
 package com.stepdefinitions;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import org.junit.Assert;
@@ -21,7 +23,11 @@ public class CoursePageSteps extends BaseClass {
 	@Given("User selects a Course to Enroll")
 	public void user_selects_a_course_to_enroll() {
 		click(DeviceSessionManager.getDriver(), course.FreeCourse);
-
+//		List<String> names = new ArrayList<String>();
+//		for (WebElement e : course.AllCourseName) {
+//			names.add(e.getText().trim());
+//		}
+//		System.out.println(names);
 	}
 
 	@When("User Clicks Enroll button")

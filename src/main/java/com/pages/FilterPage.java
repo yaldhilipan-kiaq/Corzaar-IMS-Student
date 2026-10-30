@@ -1,7 +1,10 @@
 package com.pages;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -28,8 +31,41 @@ public class FilterPage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
 	public WebElement SearchApply;
 
-	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Chemical Course \")")
-	public WebElement ChemicalCourse;
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[starts-with(@resource-id,'prem-course-')]/android.widget.TextView[8]")
+	public List<WebElement> allCourseName;
+
+	public List<String> getAllCourseNames() {
+		List<String> names = new ArrayList<String>();
+		for (WebElement e : allCourseName) {
+			String text = e.getText().trim();
+			if (!text.isEmpty())
+				names.add(text);
+		}
+		return names;
+
+	}
+
+	public boolean isCourseDisplayed(String input) {
+		for (String n : getAllCourseNames()) {
+			if (n.equalsIgnoreCase(input) || n.toLowerCase().contains(input.toLowerCase()))
+				return true;
+		}
+		return false;
+
+	}
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Category']/following-sibling::android.widget.HorizontalScrollView[1]")
+	public List<WebElement> allCategoriesName;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Mode']/following-sibling::android.widget.HorizontalScrollView[1]")
+	public List<WebElement> allModes;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Sort by']/following-sibling::android.widget.HorizontalScrollView[1]")
+	public List<WebElement> allSortBy;
+	
+	
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='\" + category + \"']")
+	public WebElement allCategories;
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\").instance(0)")
 	public WebElement Favourites;

@@ -14,19 +14,14 @@ import org.junit.platform.suite.api.Suite;
 
 @SelectClasspathResource("Features")
 
-@ConfigurationParameter(key = GLUE_PROPERTY_NAME,
+@ConfigurationParameter(key = GLUE_PROPERTY_NAME, 
 value = "com.stepdefinitions,com.hooks")
 
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME,
-value = "pretty")
+@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, 
+value = "pretty,html:target/cucumber-reports/report.html")
 
-@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME,
+@ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, 
 value = "")
-
-
-
-
-
 
 public class RunnerClassTest {
 

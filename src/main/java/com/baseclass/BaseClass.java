@@ -46,6 +46,15 @@ public class BaseClass {
 
 	}
 
+	public WebElement getTexts(AndroidDriver driver, List<WebElement> allCourseName) {
+		WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
+
+		wait.until(ExpectedConditions.visibilityOf((WebElement) allCourseName));
+
+		return allCourseName.getFirst();
+
+	}
+
 	public static void sendKeys(AndroidDriver driver, WebElement element, String text) {
 
 		WebDriverWait wait = new WebDriverWait(driver, TIMEOUT);
