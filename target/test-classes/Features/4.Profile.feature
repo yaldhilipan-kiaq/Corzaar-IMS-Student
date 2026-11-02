@@ -1,6 +1,6 @@
+@student
 Feature: CORZAAR IMS Mobile Application
 
-  @profile
   Scenario: verify Profile Completion with empty fields
     Given User verifies the Profile name
     When User enters "<name>" in profile name field

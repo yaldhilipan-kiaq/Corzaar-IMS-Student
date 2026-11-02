@@ -1,3 +1,4 @@
+@student
 Feature: CORZAAR IMS Mobile Application
 
   Scenario: Verify Institue module

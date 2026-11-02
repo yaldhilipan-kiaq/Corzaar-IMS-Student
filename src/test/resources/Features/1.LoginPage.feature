@@ -1,6 +1,7 @@
+@student
 Feature: CORZAAR IMS Mobile Application
 
-  @Login
+ 
   Scenario Outline: Verify Continue with OTP with different Inputs
     Given Corzaar IMS  application is Launched
     When User taps the SignIn button
@@ -17,7 +18,7 @@ Feature: CORZAAR IMS Mobile Application
       | 12345+++++    | navigates  to OTP page        |
       | 1234512345    | navigates  to OTP page        |
 
-  @otp
+ 
   Scenario Outline: Verify OTP field with Different Inputs
     Given User is on the OTP Verification Page
     When User enters the OTP number "<otp>"

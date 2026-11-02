@@ -1,6 +1,7 @@
+@student
 Feature: CORZAAR IMS Mobile Application
 
-  @searchcourse
+  
   Scenario: Verify user can search valid course through Search Option
     Given User Clicks course option to search course
     When User enters  Course "<courseName>" name
@@ -16,7 +17,7 @@ Feature: CORZAAR IMS Mobile Application
     And User Click the Favourites button to add course
     Then The Course is added in favourites
 
-  @category
+  
   Scenario: Verify User can search course by Category
     Given User clicks the Filter & Sort option to select category
     When User clicks "<category>" category
@@ -46,7 +47,7 @@ Feature: CORZAAR IMS Mobile Application
     Then Courses are displayed
 
 
-@rating
+
   Scenario: Verify User can search course by rating
     Given User is on the courses page after selecting free course
     When User clicks the Filter & Sort option to select course by rating
@@ -57,7 +58,7 @@ Feature: CORZAAR IMS Mobile Application
     Examples:
       | rating   |
       | Any |
-  @mode
+  
   Scenario: Verify User can search course by mode
     Given User is on the courses page after selecting the rating
     When User clicks the Filter & Sort option to select mode
@@ -69,7 +70,7 @@ Feature: CORZAAR IMS Mobile Application
       | mode   |
       | Online |
 
-  @sortby
+
   Scenario: Verify User can sort course by using filters
     Given User is on the courses page after selecting mode
     When User clicks the Filter & Sort option to sort

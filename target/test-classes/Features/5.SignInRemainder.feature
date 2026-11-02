@@ -1,3 +1,4 @@
+@student
 Feature: CORZAAR IMS Mobile Application
 
   Scenario: Verify Apply Coupon without SignIn

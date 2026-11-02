@@ -1,3 +1,4 @@
+@student
 Feature: CORZAAR IMS Mobile Application
 
   Scenario: Certificate verify module with Invalid ID
