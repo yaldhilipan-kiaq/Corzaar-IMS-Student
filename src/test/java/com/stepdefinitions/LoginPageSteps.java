@@ -69,16 +69,16 @@ public class LoginPageSteps extends BaseClass {
 	@Then("User should be on  {string}")
 	public void user_should_be_on(String expectedPage) {
 		if (expectedPage.equals("otp")) {
-			visibilityWait(DeviceSessionManager.getDriver(), log.Student);
-			String actual = log.Student.getText();
-			String expected = "Student";
+			visibilityWait(DeviceSessionManager.getDriver(), log.Profiletext);
+			String actual = log.Profiletext.getText();
+			String expected = "Profile";
 
 			Assert.assertEquals(expected, actual);
 
 		} else {
-			visibilityWait(DeviceSessionManager.getDriver(), log.Profiletext);
-			String actual = log.Profiletext.getText();
-			String expected = "Profile";
+			visibilityWait(DeviceSessionManager.getDriver(), log.OTPverify);
+			String actual = log.OTPverify.getText();
+			String expected = "Development verification code: 123456";
 
 			Assert.assertEquals(expected, actual);
 		}

@@ -18,7 +18,7 @@ import org.junit.platform.suite.api.Suite;
 value = "com.stepdefinitions,com.hooks")
 
 @ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, 
-value = "pretty,html:target/cucumber-reports/report.html")
+value = "pretty,html:target/cucumber-reports/report.html,io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm")
 
 @ConfigurationParameter(key = FILTER_TAGS_PROPERTY_NAME, 
 value = "@student")

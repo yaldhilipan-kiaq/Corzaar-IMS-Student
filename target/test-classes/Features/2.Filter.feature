@@ -80,4 +80,4 @@ Feature: CORZAAR IMS Mobile Application
 
     Examples:
       | sort    |
-      | Price ↑ |
+      | Newest |

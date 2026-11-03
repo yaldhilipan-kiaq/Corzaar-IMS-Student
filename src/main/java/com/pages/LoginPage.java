@@ -37,6 +37,9 @@ public class LoginPage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"auth-otp\")")
 	public WebElement OTPField;
 
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Development verification code: 123456\")")
+	public WebElement OTPverify;
+	
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Enter the 6-digit code sent to +91 1234512345.\")")
 	public WebElement EnterOTPCode;
 

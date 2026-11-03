@@ -92,7 +92,8 @@ public class ProfileSteps extends BaseClass {
 
 	@When("User Clicks Mark Curriculumn Progress")
 	public void user_clicks_mark_curriculumn_progress() {
-		MobileswipeUp(DeviceSessionManager.getDriver());
+		// MobileswipeUp(DeviceSessionManager.getDriver());
+		scrollToElementByText(DeviceSessionManager.getDriver(), "WhatsApp");
 		click(DeviceSessionManager.getDriver(), profile.markCurriculum1);
 
 	}
