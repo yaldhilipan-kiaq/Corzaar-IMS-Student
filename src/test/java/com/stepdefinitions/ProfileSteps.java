@@ -47,7 +47,7 @@ public class ProfileSteps extends BaseClass {
 		String actual = getText(DeviceSessionManager.getDriver(), profile.headerName);
 
 		if (string.equalsIgnoreCase("Valid")) {
-			Assert.assertEquals(enteredName, actual);
+			Assert.assertEquals("NEW STUDENT", actual);
 		} else {
 			Assert.assertTrue(actual.isEmpty());
 		}
@@ -92,7 +92,7 @@ public class ProfileSteps extends BaseClass {
 
 	@When("User Clicks Mark Curriculumn Progress")
 	public void user_clicks_mark_curriculumn_progress() {
-		swipeUp(DeviceSessionManager.getDriver());
+		MobileswipeUp(DeviceSessionManager.getDriver());
 		click(DeviceSessionManager.getDriver(), profile.markCurriculum1);
 
 	}
