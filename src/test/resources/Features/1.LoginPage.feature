@@ -9,13 +9,13 @@ Feature: CORZAAR IMS Mobile Application
     Then User should be on the "<expectedpage>"
 
     Examples:
-      | mobilenumber | expectedpage           |
-      # |              | remains on Student Login page |
-      # | 12345        | remains on Student Login page |
-      # | *****        | remains on Student Login page |
-      # | *****+++++   | navigates  to OTP page        |
-      # | 12345+++++   | navigates  to OTP page        |
-      | 1234512345   | navigates  to OTP page |
+      | mobilenumber | expectedpage                  |
+      |              | remains on Student Login page |
+      | 12345        | remains on Student Login page |
+      | *****        | remains on Student Login page |
+      | *****+++++   | navigates  to OTP page        |
+      | 12345+++++   | navigates  to OTP page        |
+      | 1234512345   | navigates  to OTP page        |
 
   Scenario Outline: Verify OTP field with Different Inputs
     Given User is on the OTP Verification Page
@@ -25,7 +25,7 @@ Feature: CORZAAR IMS Mobile Application
 
     Examples:
       | otp    | expectedPage           |
-      # |        | remains on OTP page    |
-      # | ,-.--, | remains on OTP page    |
-      # | 123    | remains on OTP page    |
+      |        | remains on OTP page    |
+      | ,-.--, | remains on OTP page    |
+      | 123    | remains on OTP page    |
       | 123456 | Successfully Logged In |
