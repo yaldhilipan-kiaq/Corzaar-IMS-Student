@@ -41,13 +41,7 @@ public class FilterSteps extends BaseClass {
 
 	@Then("Search Result should be {string}")
 	public void search_result_should_be(String string) {
-//		 visibilityWait(DeviceSessionManager.getDriver(), filter.allCourseName);
-//		WebElement text = getTexts(DeviceSessionManager.getDriver(), filter.allCourseName);
-//		try {
-//			Assert.assertEquals(text, string);
-//		} finally {
-//			Assert.assertFalse("No course ", filter.allCourseName.isEmpty());
-//		}
+
 		List<String> Names = filter.getAllCourseNames();
 		System.out.println("Courses on screen " + Names);
 		String actual = filter.isCourseDisplayed(searchedCourse) ? "displayed" : "not displayed";
@@ -63,7 +57,8 @@ public class FilterSteps extends BaseClass {
 
 	@Given("User is on the Course page")
 	public void user_is_on_the_course_page() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), filter.AllCoursestext);
+		Assert.assertTrue("All courses", filter.AllCoursestext.isDisplayed());
 	}
 
 	@Given("User Click the Favourites button to add course")
@@ -112,11 +107,6 @@ public class FilterSteps extends BaseClass {
 
 	@When("User clicks the Apply Filter button")
 	public void user_clicks_the_apply_filter_button() {
-//		System.out.println("Displayed - "+ filter.applyFilter.isDisplayed());
-//		System.out.println("Enabled - "+ filter.applyFilter.isEnabled());
-//		System.out.println("Location - "+ filter.applyFilter.getRect());
-		// applyFilterClick(DeviceSessionManager.getDriver(), filter.applyFilter);
-		// click(DeviceSessionManager.getDriver(), filter.applyFilter);
 		clickableWait(DeviceSessionManager.getDriver(), filter.applyFilter);
 		tapUpperPart(DeviceSessionManager.getDriver(), filter.applyFilter);
 	}
@@ -133,7 +123,8 @@ public class FilterSteps extends BaseClass {
 
 	@Given("User is on the courses page after selecting category")
 	public void user_is_on_the_courses_page_after_selecting_category() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), filter.AllCoursestext);
+		Assert.assertTrue("All courses", filter.AllCoursestext.isDisplayed());
 	}
 
 	@When("User clicks the Filter & Sort option for duration")
@@ -159,25 +150,14 @@ public class FilterSteps extends BaseClass {
 
 		Assert.assertEquals("3 Months", actual);
 	}
-	// 3 - 6 MONTHS
-	// DURATION---------------------------------------------------------------
-//	click(DeviceSessionManager.getDriver(), filter.FilterandSort);
-//	click(DeviceSessionManager.getDriver(), filter.threeto6months);
-//	
-//	clickableWait(DeviceSessionManager.getDriver(), filter.applyFilter);
-//	tapUpperPart(DeviceSessionManager.getDriver(), filter.applyFilter);
-//	
-//	visibilityWait(DeviceSessionManager.getDriver(), filter.sixmonthsText);
-//	String actual = getText(DeviceSessionManager.getDriver(), filter.sixmonthsText);
-//
-//	Assert.assertEquals("6 Months", actual);
 
 	// FREE
 	// COURSE---------------------------------------------------------------------
 
 	@Given("User is on the courses page after selecting Duration")
 	public void user_is_on_the_courses_page_after_selecting_duration() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), filter.AllCoursestext);
+		Assert.assertTrue("All courses", filter.AllCoursestext.isDisplayed());
 	}
 
 	@When("User clicks the Filter & Sort option for free course")
@@ -207,34 +187,40 @@ public class FilterSteps extends BaseClass {
 	// MINIMUM RATING---------------------------------------------------------------
 	@Given("User is on the courses page after selecting free course")
 	public void user_is_on_the_courses_page_after_selecting_free_course() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), filter.AllCoursestext);
+		Assert.assertTrue("All courses", filter.AllCoursestext.isDisplayed());
 	}
 
 	@When("User clicks the Filter & Sort option to select course by rating")
 	public void user_clicks_the_filter_sort_option_to_select_course_by_rating() {
-
+		click(DeviceSessionManager.getDriver(), filter.FilterandSort);
 	}
 
 	@When("User clicks {string} for the Course")
 	public void user_clicks_for_the_course(String string) {
-
+		click(DeviceSessionManager.getDriver(), filter.rating45);
 	}
 
 	@When("User clicks the Apply Filter to filter the course")
 	public void user_clicks_the_apply_filter_to_filter_the_course() {
-
+		clickableWait(DeviceSessionManager.getDriver(), filter.applyFilter);
+		tapUpperPart(DeviceSessionManager.getDriver(), filter.applyFilter);
 	}
 
 	@Then("Courses are displayed for selected rating")
 	public void courses_are_displayed_for_selected_rating() {
+		visibilityWait(DeviceSessionManager.getDriver(), filter.ratingInCourse);
+		String actual = getText(DeviceSessionManager.getDriver(), filter.ratingInCourse);
 
+		Assert.assertEquals("5.0", actual);
 	}
 
 	// ONLINE
 	// COURSE-----------------------------------------------------------------------
 	@Given("User is on the courses page after selecting the rating")
 	public void user_is_on_the_courses_page_after_selecting_the_rating() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), filter.AllCoursestext);
+		Assert.assertTrue("All courses", filter.AllCoursestext.isDisplayed());
 	}
 
 	@When("User clicks the Filter & Sort option to select mode")
@@ -289,7 +275,8 @@ public class FilterSteps extends BaseClass {
 
 	@Given("User is on the courses page after selecting mode")
 	public void user_is_on_the_courses_page_after_selecting_mode() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), filter.AllCoursestext);
+		Assert.assertTrue("All courses", filter.AllCoursestext.isDisplayed());
 	}
 
 	@When("User clicks the Filter & Sort option to sort")
@@ -331,7 +318,9 @@ public class FilterSteps extends BaseClass {
 
 	@Then("Courses are displayed for applied filter")
 	public void courses_are_displayed_for_applied_filter() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), filter.FreeText);
+		String actual = getText(DeviceSessionManager.getDriver(), filter.FreeText);
+		Assert.assertEquals("Free", actual);
 	}
 
 }

@@ -1,6 +1,7 @@
 package com.pages;
 
 import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
@@ -24,11 +25,8 @@ public class HomePage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"home-search-cta\")")
 	public WebElement homeSearchBtn;
 
-	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Design\")")
-	public WebElement design;
-
-	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Technology\")")
-	public WebElement technology;
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text='']/following-sibling::android.widget.HorizontalScrollView[1]")
+	public List<WebElement> allcategory;
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
 	public WebElement navigateBack;
@@ -41,6 +39,9 @@ public class HomePage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[contains(@text,'results')]")
 	public WebElement results;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"CORZAAR\")")
+	public WebElement corzaar;
 
 }
 //new UiSelector().text("Data Analytics with Python")valid 

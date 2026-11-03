@@ -27,6 +27,9 @@ public class SignInRemainderPage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\").instance(0)")
 	public WebElement Favourites;
 
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"All courses\")")
+	public WebElement AllCoursestext;
+	
 	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"qtile-courses\")")
 	public WebElement CoursesModule;
 

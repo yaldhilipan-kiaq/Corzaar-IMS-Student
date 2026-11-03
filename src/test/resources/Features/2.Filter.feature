@@ -57,7 +57,7 @@ Feature: CORZAAR IMS Mobile Application
 
     Examples:
       | rating   |
-      | Any |
+      | 4.5★ + |
   
   Scenario: Verify User can search course by mode
     Given User is on the courses page after selecting the rating

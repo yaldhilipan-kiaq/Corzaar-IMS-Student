@@ -23,17 +23,12 @@ public class CoursePageSteps extends BaseClass {
 	@Given("User selects a Course to Enroll")
 	public void user_selects_a_course_to_enroll() {
 		click(DeviceSessionManager.getDriver(), course.FreeCourse);
-//		List<String> names = new ArrayList<String>();
-//		for (WebElement e : course.AllCourseName) {
-//			names.add(e.getText().trim());
-//		}
-//		System.out.println(names);
+
 	}
 
 	@When("User Clicks Enroll button")
 	public void user_clicks_enroll_button() {
 		scrollToElementByText(DeviceSessionManager.getDriver(), "Enroll for free");
-		// MobileswipeUp(DeviceSessionManager.getDriver());
 		click(DeviceSessionManager.getDriver(), course.Enroll);
 	}
 
@@ -47,7 +42,6 @@ public class CoursePageSteps extends BaseClass {
 
 	@When("User verifies the Submit Review button")
 	public void user_verifies_the_submit_review_button() {
-		// MobileswipeUp(DeviceSessionManager.getDriver());
 		scrollToElementByText(DeviceSessionManager.getDriver(), "Submit review");
 		click(DeviceSessionManager.getDriver(), course.Submit);
 
@@ -56,7 +50,6 @@ public class CoursePageSteps extends BaseClass {
 	@Then("User gets back to Profile To complete enrollment")
 	public void user_gets_back_to_profile_to_complete_enrollment() {
 		scrollToElementByText(DeviceSessionManager.getDriver(), "Course details");
-		// MobileswipeDown(DeviceSessionManager.getDriver());
 		click(DeviceSessionManager.getDriver(), course.backtoHome);
 	}
 
@@ -64,7 +57,8 @@ public class CoursePageSteps extends BaseClass {
 
 	@Given("User is on the all Course page")
 	public void user_is_on_the_all_course_page() {
-		// click(DeviceSessionManager.getDriver(), course.CoursesOption);
+		visibilityWait(DeviceSessionManager.getDriver(), course.AllCoursestext);
+		Assert.assertTrue("All courses", course.AllCoursestext.isDisplayed());
 	}
 
 	@Then("Displayed course count should match the total courses listed")

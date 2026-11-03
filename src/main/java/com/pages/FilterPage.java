@@ -28,6 +28,9 @@ public class FilterPage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"discover-input\")")
 	public WebElement SearchBox;
 
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"All courses\")")
+	public WebElement AllCoursestext;
+
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
 	public WebElement SearchApply;
 
@@ -56,14 +59,13 @@ public class FilterPage {
 
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Category']/following-sibling::android.widget.HorizontalScrollView[1]")
 	public List<WebElement> allCategoriesName;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Mode']/following-sibling::android.widget.HorizontalScrollView[1]")
 	public List<WebElement> allModes;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text='Sort by']/following-sibling::android.widget.HorizontalScrollView[1]")
 	public List<WebElement> allSortBy;
-	
-	
+
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc='\" + category + \"']")
 	public WebElement allCategories;
 
@@ -135,5 +137,18 @@ public class FilterPage {
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"prem-course-a3a16ceb-5f3e-4d79-aada-ec083e5d44e7\")")
 	public WebElement FreeCourse;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"4.5★ +\")")
+	public WebElement rating45;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"4.0★ +\")")
+	public WebElement rating40;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"3.5★ +\")")
+	public WebElement rating35;
+	
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"5.0\")")
+	public WebElement ratingInCourse;
+	
 
 }

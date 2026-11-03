@@ -6,10 +6,10 @@ Feature: CORZAAR IMS Mobile Application
     When User Clicks Verify Option to verify certificate
     And User enters  Certificate "<id>" ID
     And user Clicks the Verify certificate button
-    And A Certificate is found
+    And A Certificate is founded "<expected>"
     Then user navigate backs to home page
 
-  Examples:
-|id|
-|QQQQQ|
-|CZ-CERT-372C1BBC|
+    Examples:
+      | id               | expected |
+      | QQQQQ            | invalid  |
+      | CZ-CERT-F93A1AE6 | valid    |

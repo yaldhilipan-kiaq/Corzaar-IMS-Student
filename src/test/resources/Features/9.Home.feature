@@ -1,13 +1,14 @@
 Feature: CORZAAR IMS Mobile Application
 
-Scenario: Search Design Course from the Home page
-Given User Clicks Design to Search design related courses
-When User Clicks the Search button
-Then It Shows design Related Courses
+Scenario: Search  Course from the Home page by Category
+Given User is on the home page
+When  User selects "<category>" category
+And User taps the search courses button
+Then The courses are displayed for the selected Category
 
-Scenario: Search Technology Course from the Home page
-Given User Clicks Technology to Search design related courses
-When User Clicks the Search button for technology course
-Then It Shows technology Related Courses
+Examples:
+|category|
+|Technology|
+
 
 

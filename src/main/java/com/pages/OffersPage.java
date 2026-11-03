@@ -34,6 +34,9 @@ public class OffersPage {
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Offers\")")
 	public WebElement back;
+	
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Sign in\")")
+	public WebElement signIn;
 }
 
 //android.widget.TextView[contains(@text,'Use at checkout')]

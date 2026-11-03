@@ -23,6 +23,9 @@ public class CoursePage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"qtile-courses\")")
 	public WebElement CoursesOption;
 	
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"All courses\")")
+	public WebElement AllCoursestext;
+	
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Free\")")
 	public WebElement FreeCourse;
 

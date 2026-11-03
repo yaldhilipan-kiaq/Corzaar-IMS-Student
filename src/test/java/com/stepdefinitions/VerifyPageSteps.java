@@ -16,7 +16,10 @@ public class VerifyPageSteps extends BaseClass {
 
 	@Given("User is on the Home page")
 	public void user_is_on_the_home_page() {
+		visibilityWait(DeviceSessionManager.getDriver(), verify.signIn);
+		String actual = getText(DeviceSessionManager.getDriver(), verify.signIn);
 
+		Assert.assertEquals("Sign in", actual);
 	}
 
 	@When("User Clicks Verify Option to verify certificate")
@@ -34,9 +37,19 @@ public class VerifyPageSteps extends BaseClass {
 		click(DeviceSessionManager.getDriver(), verify.Verifybutton);
 	}
 
-	@When("A Certificate is found")
-	public void a_certificate_is_found() {
+	@When("A Certificate is founded {string}")
+	public void a_certificate_is_founded(String expected) {
+		if (expected.equals("id")) {
+			visibilityWait(DeviceSessionManager.getDriver(), verify.notVerified);
+			String actual = getText(DeviceSessionManager.getDriver(), verify.notVerified);
 
+			Assert.assertEquals("Not verified", actual);
+		} else {
+			visibilityWait(DeviceSessionManager.getDriver(), verify.ValidCertificate);
+			String actual = getText(DeviceSessionManager.getDriver(), verify.ValidCertificate);
+
+			Assert.assertEquals("Valid certificate", actual);
+		}
 	}
 
 	@Then("user navigate backs to home page")
@@ -47,15 +60,5 @@ public class VerifyPageSteps extends BaseClass {
 
 		Assert.assertEquals("Sign in", actual);
 	}
-//	visibilityWait(DeviceSessionManager.getDriver(), verify.notVerified);
-//	String actual = getText(DeviceSessionManager.getDriver(), verify.notVerified);
-//
-//	Assert.assertEquals("Not verified", actual);
-//
-//	visibilityWait(DeviceSessionManager.getDriver(), verify.ValidCertificate);
-//
-//	String actual = getText(DeviceSessionManager.getDriver(), verify.ValidCertificate);
-//
-//	Assert.assertEquals("Valid certificate", actual);
 
 }

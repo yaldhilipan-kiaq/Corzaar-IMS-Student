@@ -25,9 +25,12 @@ public class ProfilePage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
 	public WebElement profile;
 
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Profile\")")
+	public WebElement profileText;
+	
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
 	public WebElement wallet;
-
+	
 	@AndroidFindBy(uiAutomator = "//android.widget.TextView[@text='Your referral code']/following-sibling::android.widget.TextView[1]")
 	public WebElement referalCode;
 
@@ -60,13 +63,13 @@ public class ProfilePage {
 	public WebElement module1;
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\").instance(0)")
-	public WebElement customerJourney;
+	public WebElement checkbox1;
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\").instance(0)")
-	public WebElement contentSystem;
+	public WebElement checkbox2;
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
-	public WebElement growthExperiment;
+	public WebElement checkbox3;
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"View certificate\")")
 	public WebElement CertificateView;
@@ -80,7 +83,7 @@ public class ProfilePage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Sign out\")")
 	public WebElement SignOut;
 	
-	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Request refund\")")
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Request refund\").instance(1)")
 	public WebElement Requestrefund;
 	
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Reason for refund\")")

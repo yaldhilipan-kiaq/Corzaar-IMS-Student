@@ -27,5 +27,12 @@ public class InstitutesPage {
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"\")")
 	public WebElement back;
+	
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"CORZAAR\")")
+	public WebElement corzaar;
+
+	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Sign in\")")
+	public WebElement signIn;
+	
 
 }

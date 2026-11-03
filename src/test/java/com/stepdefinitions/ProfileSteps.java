@@ -53,10 +53,6 @@ public class ProfileSteps extends BaseClass {
 		}
 	}
 
-//	String actual = getText(DeviceSessionManager.getDriver(), profile.completedProfile);
-//
-//	Assert.assertEquals("NEW STUDENT", actual);
-
 	// REFRRAL CODE
 	// ---------------------------------------------------------------------------
 
@@ -80,67 +76,71 @@ public class ProfileSteps extends BaseClass {
 
 	@Then("User navigates back to profile")
 	public void user_navigates_back_to_profile() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), profile.profileText);
+		String actual = profile.profileText.getText();
+		String expected = "Profile";
+		Assert.assertEquals(expected, actual);
 	}
 
 //MARK CURRICULUMN -----------------------------------------------------------------
 
 	@Given("User click Profile option")
 	public void user_click_profile_option() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), profile.profileText);
+		boolean displayed = profile.profileText.isDisplayed();
 	}
 
 	@When("User Clicks Mark Curriculumn Progress")
 	public void user_clicks_mark_curriculumn_progress() {
 		swipeUp(DeviceSessionManager.getDriver());
-//		click(DeviceSessionManager.getDriver(), profile.markCurriculum1);
+		click(DeviceSessionManager.getDriver(), profile.markCurriculum1);
 
 	}
 
 	@When("User Clicks Customer Journey to complete the progress")
 	public void user_clicks_customer_journey_to_complete_the_progress() {
-//		click(DeviceSessionManager.getDriver(), profile.customerJourney);
-//		click(DeviceSessionManager.getDriver(), profile.profile);
+		click(DeviceSessionManager.getDriver(), profile.checkbox1);
+		click(DeviceSessionManager.getDriver(), profile.profile);
 	}
 
 	@When("User Clicks content system to complete the progress")
 	public void user_clicks_content_system_to_complete_the_progress() {
-//		click(DeviceSessionManager.getDriver(), profile.contentSystem);
-//		click(DeviceSessionManager.getDriver(), profile.profile);
+		click(DeviceSessionManager.getDriver(), profile.checkbox2);
+		click(DeviceSessionManager.getDriver(), profile.profile);
 	}
 
 	@When("User Clicks growth experiment to complete the progress")
 	public void user_clicks_growth_experiment_to_complete_the_progress() {
-//		click(DeviceSessionManager.getDriver(), profile.growthExperiment);
-//		click(DeviceSessionManager.getDriver(), profile.profile);
+		click(DeviceSessionManager.getDriver(), profile.checkbox3);
+		click(DeviceSessionManager.getDriver(), profile.profile);
 	}
 
 	@When("User verifys the course is completed")
 	public void user_verifys_the_course_is_completed() {
-//		String actual = getText(DeviceSessionManager.getDriver(), profile.CourseCompleted);
-//
-//		Assert.assertEquals("active · 100% done", actual);
+		String actual = getText(DeviceSessionManager.getDriver(), profile.CourseCompleted);
+
+		Assert.assertEquals("active · 100% done", actual);
 	}
 
 	@When("User Verifies view Certificate")
 	public void user_verifies_view_certificate() {
-		// Assert.assertTrue("Button is clickable",
-		// profile.CertificateView.isDisplayed());
+		Assert.assertTrue("Button is clickable", profile.CertificateView.isDisplayed());
 	}
 
 	@When("user verfiies Download pdf")
 	public void user_verfiies_download_pdf() {
-		// Assert.assertTrue("Button is clickable", profile.DownloadPDF.isDisplayed());
+		Assert.assertTrue("Button is clickable", profile.DownloadPDF.isDisplayed());
 	}
 
 	@When("User clicks request refund button")
 	public void user_clicks_request_refund_button() {
 		click(DeviceSessionManager.getDriver(), profile.Requestrefund);
+
 	}
 
 	@When("User enters the reason for the refund")
 	public void user_enters_the_reason_for_the_refund() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), profile.RequestForrefund);
 	}
 
 	@When("User enters the submit button")
@@ -151,6 +151,11 @@ public class ProfileSteps extends BaseClass {
 	@Then("User clicks sign out button")
 	public void user_clicks_sign_out_button() {
 		scrollToElementByText(DeviceSessionManager.getDriver(), "Sign out");
+		visibilityWait(DeviceSessionManager.getDriver(), profile.SignOut);
+		String actual = profile.SignOut.getText();
+		String expected = "Sign out";
+		Assert.assertEquals(expected, actual);
+
 		click(DeviceSessionManager.getDriver(), profile.SignOut);
 	}
 

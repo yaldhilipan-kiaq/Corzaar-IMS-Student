@@ -57,6 +57,11 @@ public class SignInRemainderSteps extends BaseClass {
 	public void user_navigates_back_to_home_page() {
 		scrollToElementByText(DeviceSessionManager.getDriver(), "Course details");
 		click(DeviceSessionManager.getDriver(), sign.backtoHome);
+
+		visibilityWait(DeviceSessionManager.getDriver(), sign.signIn);
+		String actual = getText(DeviceSessionManager.getDriver(), sign.signIn);
+
+		Assert.assertEquals("Sign in", actual);
 	}
 
 	// START PAYMENT WITHOUT
@@ -101,6 +106,11 @@ public class SignInRemainderSteps extends BaseClass {
 		scrollToElementByText(DeviceSessionManager.getDriver(), "Course details");
 		click(DeviceSessionManager.getDriver(), sign.backtoHome);
 
+		visibilityWait(DeviceSessionManager.getDriver(), sign.AllCoursestext);
+		String actual = getText(DeviceSessionManager.getDriver(), sign.AllCoursestext);
+
+		Assert.assertEquals("All courses", actual);
+
 	}
 
 	// ADD FAVOURITES WITHOUT
@@ -108,7 +118,7 @@ public class SignInRemainderSteps extends BaseClass {
 
 	@Given("User is on Course discover page")
 	public void user_is_on_course_discover_page() {
-
+		visibilityWait(DeviceSessionManager.getDriver(), sign.AllCoursestext);
 	}
 
 	@Given("User clicks Favourites button")
