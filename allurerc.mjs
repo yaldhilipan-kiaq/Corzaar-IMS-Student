@@ -1,0 +1,1 @@
+export default { output: "allure-report-single",plugins:{awesome: {options: {singleFile: true } } } };

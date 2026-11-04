@@ -9,8 +9,8 @@ Feature: CORZAAR IMS Mobile Application
     Then The profile name is changed as "<expected>"
 
     Examples:
-      | name        | email                | expected |
-      | NEW STUDENT | newstudent@gmail.com | Valid    |
+      | name        | email | expected |
+      | NEW STUDENT |       | Valid    |
 
   Scenario: Verify Referral Code
     Given User clicks Referal option

@@ -33,7 +33,7 @@ public class SignInRemainderPage {
 	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"qtile-courses\")")
 	public WebElement CoursesModule;
 
-	@AndroidFindBy(uiAutomator = "//android.view.ViewGroup[contains(@content-desc,'UI UX Design Fundamentals')][1]")
+	@AndroidFindBy(uiAutomator = "new UiSelector().resourceId(\"prem-course-a5cbaaa1-c39e-4046-b194-65c0679ecee8\")")
 	public WebElement paymentCourse;
 
 	@AndroidFindBy(uiAutomator = "new UiSelector().text(\"Apply\")")

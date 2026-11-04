@@ -41,15 +41,21 @@ public class ProfileSteps extends BaseClass {
 	}
 
 	@Then("The profile name is changed as {string}")
-	public void the_profile_name_is_changed_as(String string) {
-		scrollToElementByText(DeviceSessionManager.getDriver(), string);
-		visibilityWait(DeviceSessionManager.getDriver(), profile.headerName);
-		String actual = getText(DeviceSessionManager.getDriver(), profile.headerName);
+	public void the_profile_name_is_changed_as(String expected) {
+		scrollToElementByText(DeviceSessionManager.getDriver(), "Sign out");
+		if (expected.equals("name")) {
+			visibilityWait(DeviceSessionManager.getDriver(), profile.headerName);
+			String actual = profile.headerName.getText();
+			String expected1 = "NEW STUDENT";
 
-		if (string.equalsIgnoreCase("Valid")) {
-			Assert.assertEquals("NEW STUDENT", actual);
+			Assert.assertEquals(expected1, actual);
+
 		} else {
-			Assert.assertTrue(actual.isEmpty());
+			visibilityWait(DeviceSessionManager.getDriver(), profile.headerName);
+			String actual = profile.headerName.getText();
+			String expected2 = "Complete your profile";
+
+			Assert.assertEquals(expected2, actual);
 		}
 	}
 
@@ -66,7 +72,7 @@ public class ProfileSteps extends BaseClass {
 		visibilityWait(DeviceSessionManager.getDriver(), profile.referalCode);
 		String actual = getText(DeviceSessionManager.getDriver(), profile.referalCode);
 
-		Assert.assertTrue("Referral code is displayed =" + actual, profile.referalCode.isDisplayed());
+		Assert.assertTrue("Referral code is not displayed =" + actual, profile.referalCode.isDisplayed());
 	}
 
 	@When("user clicks back button")
